@@ -1,6 +1,8 @@
 export class Fizz {
     do(digit: number) {
-        return digit % 3 == 0 ? "Fizz" : digit.toString();
+        return digit % 3 == 0 ?
+            "Fizz" : digit%5 == 0 ?
+                "Buzz" : digit.toString();
     }
 }
 
@@ -14,6 +16,10 @@ describe('FizzBuzzKata test', () => {
     });
 
     it("should give Buzz if multiples of five", () => {
-        expect(new Fizz().do(3)).toBe("Buzz");
+        expect(new Fizz().do(5)).toBe("Buzz");
+    });
+
+    it("should give FizzBuzz if multiples of three AND five", () => {
+        expect(new Fizz().do(15)).toBe("FizzBuzz");
     });
 })
